@@ -1,0 +1,22 @@
+{
+    "name": "schoolplatform/tenancy-core",
+    "type": "library",
+    "require": {
+        "php": "^8.2",
+        "laravel/framework": "^11.0|^12.0|^13.0",
+        "spatie/laravel-multitenancy": "^4.0",
+        "laravel/passport": "^12.0|^13.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "TenancyCore\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": ["TenancyCore\\TenancyCoreServiceProvider"]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
