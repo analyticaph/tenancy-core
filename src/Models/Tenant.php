@@ -2,10 +2,13 @@
 
 namespace TenancyCore\Models;
 
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Spatie\Multitenancy\Models\Tenant as SpatieTenant;
 
 class Tenant extends SpatieTenant
 {
+    use HasUuids;
+
     protected $guarded = [];
 
     protected $casts = [
@@ -13,6 +16,11 @@ class Tenant extends SpatieTenant
         'database_password' => 'encrypted',
         'settings' => 'json',
     ];
+
+    public function getDatabaseName(): string
+    {
+        return $this->database_name;
+    }
 
     public function domains()
     {
