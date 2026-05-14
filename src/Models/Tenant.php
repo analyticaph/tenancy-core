@@ -44,4 +44,10 @@ class Tenant extends SpatieTenant
     {
         return $this->domains()->where('is_primary', true)->first();
     }
+
+    public function staff()
+    {
+        return $this->belongsToMany(\App\Models\User::class, 'tenant_user', 'tenant_id', 'user_id')
+            ->withPivot('role', 'joined_at');
+    }
 }

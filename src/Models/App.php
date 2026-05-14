@@ -12,4 +12,14 @@ class App extends Model
     protected $connection = 'landlord';
 
     protected $guarded = [];
+
+    protected $casts = [
+        'default_scopes' => 'array',
+        'is_active' => 'bool',
+    ];
+
+    public function clientApps()
+    {
+        return $this->hasMany(OAuthClientApp::class, 'app_id');
+    }
 }
