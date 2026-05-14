@@ -9,14 +9,16 @@ class OAuthClient extends Model
 {
     use HasUuids;
 
+    protected $connection = 'landlord';
+
     protected $table = 'oauth_clients';
 
     protected $guarded = [];
 
     protected $casts = [
         'secret' => 'encrypted',
-        'personal_access_client' => 'bool',
-        'password_client' => 'bool',
+        'redirect_uris' => 'array',
+        'grant_types' => 'array',
         'revoked' => 'bool',
     ];
 
@@ -27,6 +29,6 @@ class OAuthClient extends Model
 
     public function apps()
     {
-        return $this->hasMany(OAuthClientApp::class);
+        return $this->hasMany(OAuthClientApp::class, 'client_id');
     }
 }

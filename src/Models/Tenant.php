@@ -2,12 +2,15 @@
 
 namespace TenancyCore\Models;
 
+use Database\Factories\TenantFactory;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Spatie\Multitenancy\Models\Tenant as SpatieTenant;
 
 class Tenant extends SpatieTenant
 {
-    use HasUuids;
+    /** @use HasFactory<TenantFactory> */
+    use HasFactory, HasUuids;
 
     protected $guarded = [];
 
@@ -16,6 +19,11 @@ class Tenant extends SpatieTenant
         'database_password' => 'encrypted',
         'settings' => 'json',
     ];
+
+    protected static function newFactory(): TenantFactory
+    {
+        return TenantFactory::new();
+    }
 
     public function getDatabaseName(): string
     {

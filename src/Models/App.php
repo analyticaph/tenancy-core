@@ -8,5 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class App extends Model
 {
     use HasUuids;
+
+    protected $connection = 'landlord';
+
     protected $guarded = [];
 }

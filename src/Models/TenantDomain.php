@@ -9,7 +9,13 @@ class TenantDomain extends Model
 {
     use HasUuids;
 
+    protected $connection = 'landlord';
+
     protected $guarded = [];
+
+    protected $casts = [
+        'is_primary' => 'bool',
+    ];
 
     public function tenant()
     {
