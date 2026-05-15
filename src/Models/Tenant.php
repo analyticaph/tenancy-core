@@ -5,6 +5,7 @@ namespace TenancyCore\Models;
 use Database\Factories\TenantFactory;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Spatie\Multitenancy\Models\Tenant as SpatieTenant;
 
 class Tenant extends SpatieTenant
@@ -43,6 +44,11 @@ class Tenant extends SpatieTenant
     public function primaryDomain(): ?TenantDomain
     {
         return $this->domains()->where('is_primary', true)->first();
+    }
+
+    public function tenantApps(): HasMany
+    {
+        return $this->hasMany(TenantApp::class);
     }
 
     public function staff()

@@ -4,6 +4,7 @@ namespace TenancyCore\Models;
 
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class App extends Model
 {
@@ -18,8 +19,13 @@ class App extends Model
         'is_active' => 'bool',
     ];
 
-    public function clientApps()
+    public function clientApps(): HasMany
     {
         return $this->hasMany(OAuthClientApp::class, 'app_id');
+    }
+
+    public function tenantApps(): HasMany
+    {
+        return $this->hasMany(TenantApp::class, 'app_id');
     }
 }
