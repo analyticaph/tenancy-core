@@ -2,23 +2,21 @@
 
 namespace TenancyCore\Models;
 
-use Illuminate\Database\Eloquent\Concerns\HasUuids;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Casts\Attribute;
+use Laravel\Passport\Client as PassportClient;
 
-class OAuthClient extends Model
+class OAuthClient extends PassportClient
 {
-    use HasUuids;
-
     protected $connection = 'landlord';
 
     protected $table = 'oauth_clients';
 
-    protected $guarded = [];
-
     protected $casts = [
-        'secret' => 'encrypted',
-        'redirect_uris' => 'array',
         'grant_types' => 'array',
+        'scopes' => 'array',
+        'redirect_uris' => 'array',
+        'personal_access_client' => 'bool',
+        'password_client' => 'bool',
         'revoked' => 'bool',
     ];
 
@@ -30,5 +28,17 @@ class OAuthClient extends Model
     public function apps()
     {
         return $this->hasMany(OAuthClientApp::class, 'client_id');
+    }
+
+    protected function secret(): Attribute
+    {
+        return Attribute::make(
+            get: fn (?string $value): ?string => $value === null ? null : decrypt($value),
+            set: function (?string $value): ?string {
+                $this->plainSecret = $value;
+
+                return $value === null ? null : encrypt($value);
+            },
+        );
     }
 }

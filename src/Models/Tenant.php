@@ -2,11 +2,13 @@
 
 namespace TenancyCore\Models;
 
+use App\Models\User;
 use Database\Factories\TenantFactory;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Spatie\Multitenancy\Models\Tenant as SpatieTenant;
+use TenancyCore\Casts\SharedEncrypted;
 
 class Tenant extends SpatieTenant
 {
@@ -16,8 +18,8 @@ class Tenant extends SpatieTenant
     protected $guarded = [];
 
     protected $casts = [
-        'database_username' => 'encrypted',
-        'database_password' => 'encrypted',
+        'database_username' => SharedEncrypted::class,
+        'database_password' => SharedEncrypted::class,
         'settings' => 'json',
     ];
 
@@ -53,7 +55,7 @@ class Tenant extends SpatieTenant
 
     public function staff()
     {
-        return $this->belongsToMany(\App\Models\User::class, 'tenant_user', 'tenant_id', 'user_id')
+        return $this->belongsToMany(User::class, 'tenant_user', 'tenant_id', 'user_id')
             ->withPivot('role', 'joined_at');
     }
 }

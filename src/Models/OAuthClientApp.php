@@ -3,11 +3,13 @@
 namespace TenancyCore\Models;
 
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class OAuthClientApp extends Model
 {
-    use HasUuids;
+    use HasFactory, HasUuids;
 
     protected $connection = 'landlord';
 
@@ -24,5 +26,10 @@ class OAuthClientApp extends Model
     public function oauthClient()
     {
         return $this->belongsTo(OAuthClient::class, 'client_id');
+    }
+
+    public function app(): BelongsTo
+    {
+        return $this->belongsTo(App::class, 'app_id');
     }
 }
