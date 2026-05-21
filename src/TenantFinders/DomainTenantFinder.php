@@ -2,10 +2,21 @@
 
 namespace TenancyCore\TenantFinders;
 
-use Spatie\Multitenancy\TenantFinder\DomainTenantFinder as SpatieDomainTenantFinder;
+use Illuminate\Http\Request;
+use Spatie\Multitenancy\TenantFinder\TenantFinder;
+use TenancyCore\Models\Tenant;
+use TenancyCore\Models\TenantDomain;
 
-class DomainTenantFinder extends SpatieDomainTenantFinder
+class DomainTenantFinder extends TenantFinder
 {
-    // Inherits Spatie's domain-based resolution.
-    // Override getCurrentDomain() here if subdomain extraction needs customising.
+    public function findForRequest(Request $request): ?Tenant
+    {
+        $host = $request->getHost();
+
+        $domain = TenantDomain::where('domain', $host)
+            ->with('tenant')
+            ->first();
+
+        return $domain?->tenant;
+    }
 }
