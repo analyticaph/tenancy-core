@@ -1,11 +1,11 @@
 <?php
 
-namespace TenancyCore\TenantFinders;
+namespace Analyticaph\TenancyCore\TenantFinders;
 
 use Illuminate\Http\Request;
 use Spatie\Multitenancy\TenantFinder\TenantFinder;
-use TenancyCore\Models\Tenant;
-use TenancyCore\Models\TenantDomain;
+use Analyticaph\TenancyCore\Models\Tenant;
+use Analyticaph\TenancyCore\Models\TenantDomain;
 
 class DomainTenantFinder extends TenantFinder
 {

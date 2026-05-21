@@ -1,8 +1,8 @@
 <?php
 
-namespace TenancyCore\Support;
+namespace Analyticaph\TenancyCore\Support;
 
-use TenancyCore\Models\Tenant;
+use Analyticaph\TenancyCore\Models\Tenant;
 
 class TenantContext
 {

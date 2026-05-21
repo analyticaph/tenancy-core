@@ -1,6 +1,6 @@
 <?php
 
-namespace TenancyCore\Casts;
+namespace Analyticaph\TenancyCore\Casts;
 
 use Illuminate\Contracts\Database\Eloquent\CastsAttributes;
 use Illuminate\Encryption\Encrypter;

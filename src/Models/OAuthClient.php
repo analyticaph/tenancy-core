@@ -1,6 +1,6 @@
 <?php
 
-namespace TenancyCore\Models;
+namespace Analyticaph\TenancyCore\Models;
 
 use Laravel\Passport\Client as PassportClient;
 
