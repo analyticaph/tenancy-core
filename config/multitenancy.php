@@ -16,7 +16,7 @@ return [
      * 'tenant_finder' => null,
      *
      */
-    'tenant_finder' => \TenancyCore\TenantFinders\DomainTenantFinder::class,
+    'tenant_finder' => \Analyticaph\TenancyCore\TenantFinders\DomainTenantFinder::class,
 
     /*
      * These fields are used by tenant:artisan command to match one or more tenant.
@@ -31,7 +31,7 @@ return [
      * A valid task is any class that implements Spatie\Multitenancy\Tasks\SwitchTenantTask
      */
     'switch_tenant_tasks' => [
-        \TenancyCore\Tasks\SwitchTenantDatabaseTask::class,
+        \Analyticaph\TenancyCore\Tasks\SwitchTenantDatabaseTask::class,
         \Spatie\Multitenancy\Tasks\PrefixCacheTask::class,
     ],
 
@@ -41,7 +41,7 @@ return [
      * It must  extend `Spatie\Multitenancy\Models\Tenant::class` or
      * implement `Spatie\Multitenancy\Contracts\IsTenant::class` interface
      */
-    'tenant_model' => \TenancyCore\Models\Tenant::class,
+    'tenant_model' => \Analyticaph\TenancyCore\Models\Tenant::class,
 
     /*
      * If there is a current tenant when dispatching a job, the id of the current tenant
