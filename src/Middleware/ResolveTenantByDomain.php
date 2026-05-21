@@ -1,11 +1,11 @@
 <?php
 
-namespace TenancyCore\Middleware;
+namespace Analyticaph\TenancyCore\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use TenancyCore\Exceptions\TenantNotFoundException;
-use TenancyCore\TenantFinders\DomainTenantFinder;
+use Analyticaph\TenancyCore\Exceptions\TenantNotFoundException;
+use Analyticaph\TenancyCore\TenantFinders\DomainTenantFinder;
 
 class ResolveTenantByDomain
 {

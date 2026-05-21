@@ -1,10 +1,10 @@
 <?php
 
-namespace TenancyCore\Tasks;
+namespace Analyticaph\TenancyCore\Tasks;
 
 use Spatie\Multitenancy\Contracts\IsTenant;
 use Spatie\Multitenancy\Tasks\SwitchTenantTask;
-use TenancyCore\Models\Tenant;
+use Analyticaph\TenancyCore\Models\Tenant;
 
 class SwitchTenantDatabaseTask implements SwitchTenantTask
 {

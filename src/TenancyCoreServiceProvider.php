@@ -1,10 +1,10 @@
 <?php
 
-namespace TenancyCore;
+namespace Analyticaph\TenancyCore;
 
 use Illuminate\Support\ServiceProvider;
-use TenancyCore\Middleware\ResolveTenantByDomain;
-use TenancyCore\Middleware\ResolveTenantByOAuthToken;
+use Analyticaph\TenancyCore\Middleware\ResolveTenantByDomain;
+use Analyticaph\TenancyCore\Middleware\ResolveTenantByOAuthToken;
 
 class TenancyCoreServiceProvider extends ServiceProvider
 {

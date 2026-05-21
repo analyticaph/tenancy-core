@@ -1,6 +1,6 @@
 <?php
 
-namespace TenancyCore\Exceptions;
+namespace Analyticaph\TenancyCore\Exceptions;
 
 use RuntimeException;
 

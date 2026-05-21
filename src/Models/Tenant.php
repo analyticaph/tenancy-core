@@ -1,6 +1,6 @@
 <?php
 
-namespace TenancyCore\Models;
+namespace Analyticaph\TenancyCore\Models;
 
 use App\Models\User;
 use Database\Factories\TenantFactory;
@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Spatie\Multitenancy\Models\Tenant as SpatieTenant;
-use TenancyCore\Casts\SharedEncrypted;
+use Analyticaph\TenancyCore\Casts\SharedEncrypted;
 
 class Tenant extends SpatieTenant
 {

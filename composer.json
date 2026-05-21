@@ -9,13 +9,13 @@
   },
   "autoload": {
     "psr-4": {
-      "TenancyCore\\": "src/"
+      "Analyticaph\\TenancyCore\\": "src/"
     }
   },
   "extra": {
     "laravel": {
       "providers": [
-        "TenancyCore\\TenancyCoreServiceProvider"
+        "Analyticaph\\TenancyCore\\TenancyCoreServiceProvider"
       ]
     }
   },
