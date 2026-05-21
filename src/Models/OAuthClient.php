@@ -2,7 +2,6 @@
 
 namespace TenancyCore\Models;
 
-use Illuminate\Database\Eloquent\Casts\Attribute;
 use Laravel\Passport\Client as PassportClient;
 
 class OAuthClient extends PassportClient
@@ -30,15 +29,4 @@ class OAuthClient extends PassportClient
         return $this->hasMany(OAuthClientApp::class, 'client_id');
     }
 
-    protected function secret(): Attribute
-    {
-        return Attribute::make(
-            get: fn (?string $value): ?string => $value === null ? null : decrypt($value),
-            set: function (?string $value): ?string {
-                $this->plainSecret = $value;
-
-                return $value === null ? null : encrypt($value);
-            },
-        );
-    }
 }

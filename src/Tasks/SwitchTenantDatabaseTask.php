@@ -18,6 +18,7 @@ class SwitchTenantDatabaseTask implements SwitchTenantTask
             "database.connections.{$connection}.database" => $tenant->database_name,
             "database.connections.{$connection}.username" => $tenant->database_username,
             "database.connections.{$connection}.password" => $tenant->database_password,
+            'database.default' => $connection,
         ]);
 
         app('db')->purge($connection);
@@ -28,11 +29,14 @@ class SwitchTenantDatabaseTask implements SwitchTenantTask
     {
         $connection = config('multitenancy.tenant_database_connection_name');
 
+        $landlord = config('multitenancy.landlord_database_connection_name', 'landlord');
+
         config([
             "database.connections.{$connection}.host" => null,
             "database.connections.{$connection}.database" => null,
             "database.connections.{$connection}.username" => null,
             "database.connections.{$connection}.password" => null,
+            'database.default' => $landlord,
         ]);
 
         app('db')->purge($connection);
