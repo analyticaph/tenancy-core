@@ -9,7 +9,7 @@ return [
     | The Eloquent model used as the canonical Tenant representation across
     | all SmartCampus apps. Must extend SpatieTenant.
     */
-    'tenant_model' => \TenancyCore\Models\Tenant::class,
+    'tenant_model' => \Analyticaph\TenancyCore\Models\Tenant::class,
 
     /*
     |--------------------------------------------------------------------------
@@ -30,8 +30,8 @@ return [
     | token   — resolves tenant from the OAuth access token's tenant_id claim.
     */
     'finders' => [
-        'domain' => \TenancyCore\TenantFinders\DomainTenantFinder::class,
-        'token'  => \TenancyCore\TenantFinders\OAuthTokenTenantFinder::class,
+        'domain' => \Analyticaph\TenancyCore\TenantFinders\DomainTenantFinder::class,
+        'token'  => \Analyticaph\TenancyCore\TenantFinders\OAuthTokenTenantFinder::class,
     ],
 
 ];
