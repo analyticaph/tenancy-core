@@ -4,12 +4,20 @@ namespace TenancyCore\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Spatie\Multitenancy\Http\Middleware\NeedsTenant;
+use TenancyCore\Exceptions\TenantNotFoundException;
+use TenancyCore\TenantFinders\DomainTenantFinder;
 
-class ResolveTenantByDomain extends NeedsTenant
+class ResolveTenantByDomain
 {
+    public function __construct(private readonly DomainTenantFinder $finder) {}
+
     public function handle(Request $request, Closure $next): mixed
     {
-        return parent::handle($request, $next);
+        $tenant = $this->finder->findForRequest($request)
+            ?? throw new TenantNotFoundException("No tenant for host: {$request->getHost()}");
+
+        $tenant->makeCurrent();
+
+        return $next($request);
     }
 }
