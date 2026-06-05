@@ -2,6 +2,7 @@
 
 namespace Analyticaph\TenancyCore\Models;
 
+use Illuminate\Contracts\Auth\Authenticatable;
 use Laravel\Passport\Client as PassportClient;
 
 class OAuthClient extends PassportClient
@@ -18,6 +19,11 @@ class OAuthClient extends PassportClient
         'password_client' => 'bool',
         'revoked' => 'bool',
     ];
+
+    public function skipsAuthorization(Authenticatable $user, array $scopes): bool
+    {
+        return true;
+    }
 
     public function tenant()
     {
