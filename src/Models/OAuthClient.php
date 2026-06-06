@@ -4,6 +4,7 @@ namespace Analyticaph\TenancyCore\Models;
 
 use Illuminate\Contracts\Auth\Authenticatable;
 use Laravel\Passport\Client as PassportClient;
+use Analyticaph\TenancyCore\Casts\SharedEncrypted;
 
 class OAuthClient extends PassportClient
 {
@@ -18,6 +19,7 @@ class OAuthClient extends PassportClient
         'personal_access_client' => 'bool',
         'password_client' => 'bool',
         'revoked' => 'bool',
+        'secret_plaintext' => SharedEncrypted::class,
     ];
 
     public function skipsAuthorization(Authenticatable $user, array $scopes): bool

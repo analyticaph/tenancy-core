@@ -18,7 +18,6 @@ class OAuthClientApp extends Model
     protected $guarded = [];
 
     protected $casts = [
-        'redirect_uris' => 'array',
         'scopes' => 'array',
         'is_active' => 'bool',
     ];
