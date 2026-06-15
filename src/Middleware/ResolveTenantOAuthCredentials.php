@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Middleware;
+namespace Analyticaph\TenancyCore\Middleware;
 
 use Analyticaph\TenancyCore\Exceptions\AppNotProvisionedException;
 use Analyticaph\TenancyCore\Support\TenantContext;
@@ -22,7 +22,7 @@ class ResolveTenantOAuthCredentials
         $appSlug = (string) config('oauth-client.app_slug');
 
         $clientApp = $oauthClient->apps()
-            ->whereHas('app', fn ($query) => $query->where('slug', $appSlug))
+            ->whereHas('app', fn($query) => $query->where('slug', $appSlug))
             ->where('is_active', true)
             ->first()
             ?? throw new AppNotProvisionedException(
