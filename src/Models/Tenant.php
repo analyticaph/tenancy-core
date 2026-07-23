@@ -40,7 +40,7 @@ class Tenant extends SpatieTenant
 
     public function oauthClient()
     {
-        return $this->hasOne(OAuthClient::class);
+        return $this->hasOne(OAuthClient::class)->where('client_type', 'confidential');
     }
 
     public function primaryDomain(): ?TenantDomain
