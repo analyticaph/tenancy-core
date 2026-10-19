@@ -34,4 +34,16 @@ return [
         'token'  => \Analyticaph\TenancyCore\TenantFinders\OAuthTokenTenantFinder::class,
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Landlord Lookup Cache
+    |--------------------------------------------------------------------------
+    | Seconds to cache per-request landlord lookups (tenant by domain/id, the
+    | tenant's OAuth client credentials) in the default cache store. Tenant
+    | changes made in the console take up to this long to apply. 0 disables.
+    */
+    'cache' => [
+        'ttl' => (int) env('TENANCY_CACHE_TTL', 300),
+    ],
+
 ];

@@ -33,6 +33,8 @@ return [
     'switch_tenant_tasks' => [
         \Analyticaph\TenancyCore\Tasks\SwitchTenantDatabaseTask::class,
         \Spatie\Multitenancy\Tasks\PrefixCacheTask::class,
+        // Must run after PrefixCacheTask so the registrar rebinds to the tenant prefix.
+        \Analyticaph\TenancyCore\Tasks\RefreshPermissionRegistrarTask::class,
     ],
 
     /*

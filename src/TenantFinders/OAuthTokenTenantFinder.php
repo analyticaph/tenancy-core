@@ -5,6 +5,7 @@ namespace Analyticaph\TenancyCore\TenantFinders;
 use Illuminate\Http\Request;
 use Spatie\Multitenancy\TenantFinder\TenantFinder;
 use Analyticaph\TenancyCore\Models\Tenant;
+use Analyticaph\TenancyCore\Support\TenantCache;
 
 class OAuthTokenTenantFinder extends TenantFinder
 {
@@ -16,6 +17,6 @@ class OAuthTokenTenantFinder extends TenantFinder
             return null;
         }
 
-        return Tenant::find($tenantId);
+        return TenantCache::find((string) $tenantId);
     }
 }
